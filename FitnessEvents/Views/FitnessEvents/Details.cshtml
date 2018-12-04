@@ -1,0 +1,77 @@
+﻿@using Microsoft.AspNet.Identity
+@model FitnessEvents.Models.FitnessEvent
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FitnessEvent</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EventName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventDetails)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostedDate)
+        </dd>
+
+        <dd>
+            <img class="img-thumbnail" src='@Url.Content("~/Uploads/" + @Model.ImageUrl)' />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUserId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (Request.IsAuthenticated)
+    {<a href="@Url.Action("Edit", "FitnessEvents", new { id = Model.Id })" class="btn btn-warning">Edit</a> 
+    }
+        
+    <a href="@Url.Action("Index", "FitnessEvents", new { id = Model.Id })" class="btn btn-warning">Back to list</a>
+    <a href="@Url.Action("Create", "EventRegistrations", new { id = Model.Id })" class="btn btn-success">Register</a>
+
+</p>

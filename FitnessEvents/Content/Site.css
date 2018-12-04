@@ -1,0 +1,98 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-image: url('../img/1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.mainhead {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    color: inherit;
+    background-color: rgba(204, 204, 204, 0.5);
+    
+}
+.mainhead h1,
+.mainhead .h1 {
+    color: inherit;
+}
+
+
+.mainhead p {
+    margin-bottom: 15px;
+    font-size: 21px;
+    font-weight: 200;
+}
+
+.mainhead > hr {
+    border-top-color: #d5d5d5;
+}
+
+.container .mainhead,
+.container-fluid .mainhead {
+    padding-right: 15px;
+    padding-left: 15px;
+    border-radius: 6px;
+}
+
+.mainhead .container {
+    max-width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .mainhead {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+
+    .container .mainhead,
+    .container-fluid .mainhead {
+        padding-right: 60px;
+        padding-left: 60px;
+    }
+
+    .mainhead h1,
+    .mainhead .h1 {
+        font-size: 63px;
+    }
+
+.headercenter {
+        text-align: center;
+    }
+
+.box-row {
+        width: 915px;
+        padding: 10px;
+        margin-top: 50px;
+        overflow: hidden;
+       
+    }
+.box-row span  {
+        color: black;
+        font-family: 'SegoeRegular',Helvetica,Arial,sans-serif;
+        font-size: 1.1em;
+        line-height: 1.6em;
+}
+
+    /* Set width on the form input elements since they're 100% wide by default */
+    input,
+    select,
+    textarea {
+        max-width: 280px;
+    }
+}

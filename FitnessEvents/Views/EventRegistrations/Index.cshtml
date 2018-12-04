@@ -1,0 +1,76 @@
+﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<FitnessEvents.Models.EventRegistration>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Registration Details</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SpecialRequest)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpecialRequest)
+            </td>
+
+            <td>
+
+                @if (Request.IsAuthenticated)
+                {
+                    if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                    {
+                    <a href="@Url.Action("Edit", "EventRegistrations", new { id = item.ID })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("Delete", "EventRegistrations", new { id = item.ID })" class="btn btn-danger">Delete</a>
+                    }
+                    <a href="@Url.Action("Details", "EventRegistrations", new { id = item.ID })" class="btn btn-primary">Details</a>
+                    <a href="@Url.Action("Send_Email", "Home", new { id = item.ID })" class="btn btn-success">Send Email Invites</a>
+                }
+         
+
+            </td>
+        </tr>
+    }
+
+</table>

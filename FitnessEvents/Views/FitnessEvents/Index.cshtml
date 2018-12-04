@@ -1,0 +1,84 @@
+﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<FitnessEvents.Models.FitnessEvent>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Fitness events around you</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EventName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicationUserId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventDetails)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostedDate)
+            </td>
+            <td>
+                <img class="img-thumbnail" src='@Url.Content("~/Uploads/" + item.ImageUrl)' />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUserId)
+            </td>
+            <td>
+
+                <a href="@Url.Action("Details", "FitnessEvents", new { id = item.Id })" class="btn btn-primary">Details</a>
+                <a href="@Url.Action("Create", "EventRegistrations", new { id = item.Id })" class="btn btn-success">Register</a>
+
+                @if (Request.IsAuthenticated)
+                {
+                    if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                    {
+                        <a href="@Url.Action("Edit", "FitnessEvents", new { id = item.Id })" class="btn btn-warning">Edit</a>
+                        <a href="@Url.Action("Delete", "FitnessEvents", new { id = item.Id })" class="btn btn-danger">Delete</a>
+
+
+
+                    }
+
+                    <a href="@Url.Action("Index", "EventRegistrations", new { id = item.Id })" class="btn btn-primary">View Registrations</a>
+                }
+
+                </td>
+        </tr>
+    }
+
+</table>
